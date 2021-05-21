@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    public GameObject MainMenuUI;
+    public GameObject LevelSelectUI;
     static bool check;
     public GameObject[] lockedLevels;
     // public GameObject[] unlockedLevels;
@@ -42,9 +44,15 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
+    public void OnClickNext()
+    {
+        SceneManager.LoadScene("TestScene");
+        MainMenuUI.SetActive(false);
+        LevelSelectUI.SetActive(true);
+    }
     public void OnClickLevelButton(int level)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Level " + (currentlevel+1));
 
     }
 

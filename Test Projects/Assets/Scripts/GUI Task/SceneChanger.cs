@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
 {
     public void OnClickNext()
     {
+        PlayerPrefs.SetInt("currentLevel", PlayerPrefs.GetInt("currentLevel") + 1);
         SceneManager.LoadScene("TestScene");
 
     }
