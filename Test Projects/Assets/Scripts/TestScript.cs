@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    private void Awake()
-    {
-        Debug.Log("Awake Method Called.");
-    }
+
+    //private void Awake()
+    //{
+    //    Debug.Log("Awake Method Called.");
+    //}
 
     private void Start()
     {
-        Debug.Log("Start Function Called."); 
+        Invoke("Update", 5);
     }
 
     private void Update()
@@ -19,31 +20,31 @@ public class TestScript : MonoBehaviour
         Debug.Log("Update Method Called");
     }
 
-    private void FixedUpdate()
-    {
-        Debug.Log("Fixed Update Method Called");
-    }
+    //private void FixedUpdate()
+    //{
+    //    Debug.Log("Fixed Update Method Called");
+    //}
 
-    private void LateUpdate()
-    {
-        Debug.Log("Late Update Method Called");
-    }
+    //private void LateUpdate()
+    //{
+    //    Debug.Log("Late Update Method Called");
+    //}
 
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(10, 10, 150, 100), "I am a button"))
-        {
-            print("You clicked the button!");
-        }
-    }
+    //void OnGUI()
+    //{
+    //    if (GUI.Button(new Rect(10, 10, 150, 100), "I am a button"))
+    //    {
+    //        print("You clicked the button!");
+    //    }
+    //}
 
-    private void OnEnable()
-    {
-        Debug.Log("Script Enabled");
-    }
+    //private void OnEnable()
+    //{
+    //    Debug.Log("Script Enabled");
+    //}
 
-    private void OnDisable()
-    {
-        Debug.Log("Script Disabled");
-    }
+    //private void OnDisable()
+    //{
+    //    Debug.Log("Script Disabled");
+    //}
 }
