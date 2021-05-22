@@ -4,43 +4,52 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+namespace MainMenu
 {
-    public GameObject MainMenuUI;
-    public GameObject LevelSelectUI;
-    public GameObject ExitPopUp;
-    static bool check=true;
-
-    private void Awake()
+    public class MainMenuScript : MonoBehaviour
     {
-        if (check) { 
-            PlayerPrefs.SetInt("currentLevel", 0);
-        check = false;
-        }
-        //if (PlayerPrefs.HasKey("level")) {
-        //    // 
-        //    Debug.Log("YEs");
-        //}
-        //else
-        //{
-        //    Debug.Log("No");
-        //}
-    }
-
-    public void OnClickPlay()
-    {
-        MainMenuUI.SetActive(false);
-        LevelSelectUI.SetActive(true);
-    }
-    public void OnClickExit()
-    {
-        ExitPopUp.SetActive(true);
+        public GameObject MainMenuUI;
+        public GameObject LevelSelectUI;
+        public GameObject loadingLevelUI;
+        public GameObject ExitPopUp;
+        static bool check = true;
         
-    }
+        private void Awake()
+        {
 
-    public void NoExit()
-    {
-        ExitPopUp.SetActive(false);
-    }
+            if (check)
+            {
+                PlayerPrefs.SetInt("currentLevel", 0);
+                PlayerPrefs.SetInt("unlockedLevel", 0);
+                check = false;
+            }
 
+            if (PlayerPrefs.GetInt("currentLevel") > 0)
+            {
+                loadingLevelUI.SetActive(true);
+                MainMenuUI.SetActive(false);
+                loadingLevelUI.SetActive(false);
+                LevelSelectUI.SetActive(true);
+            }
+        }
+
+
+        public void OnClickPlay()
+        {
+            MainMenuUI.SetActive(false);
+            LevelSelectUI.SetActive(true);
+        }
+        public void OnClickExit()
+        {
+            ExitPopUp.SetActive(true);
+
+        }
+
+        public void NoExit()
+        {
+            ExitPopUp.SetActive(false);
+        }
+
+    }
 }
+
