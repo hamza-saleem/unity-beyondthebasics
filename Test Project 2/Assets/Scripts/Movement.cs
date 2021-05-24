@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     private int countDownTime;
 
     public Text countDownTimerDisplay;
-
+    public GameObject gameOver;
 
     private void Start()
     {
@@ -34,7 +34,6 @@ public class Movement : MonoBehaviour
                 SetTargetPosition();
             }
 
-
             MoveToTarget();
         }
         
@@ -43,22 +42,15 @@ public class Movement : MonoBehaviour
 
     private void SetTargetPosition()
     {
-        cursorPosition = camera.ScreenToWorldPoint(Input.mousePosition);
+       
 
+        cursorPosition = camera.ScreenToWorldPoint(Input.mousePosition);
         targetPosition = new Vector3(cursorPosition.x, cursorPosition.y, 0);
     }
 
     private void MoveToTarget()
     {
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * speed);
-    }
-
-    private void GameOver()
-    {
-        if(transform.position == targetPosition)
-        {
-            Debug.Log("Game Over");
-        }
     }
 
     IEnumerator CountDownStart()
@@ -79,6 +71,14 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         countDownTimerDisplay.gameObject.SetActive(false);
+        if (transform.position == cursorPosition)
+        {
+                yield return new WaitForSeconds(3);
+                gameOver.SetActive(true);
+            
+        }
+           
+
 
     }
 
