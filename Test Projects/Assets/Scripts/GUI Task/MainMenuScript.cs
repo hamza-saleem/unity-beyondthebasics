@@ -9,14 +9,18 @@ namespace MainMenu
     public class MainMenuScript : MonoBehaviour
     {
         public GameObject MainMenuUI;
+       // public GameObject MainMenuUIButtons;
         public GameObject LevelSelectUI;
         public GameObject loadingLevelUI;
         public GameObject ExitPopUp;
+        private Animation transitionToLevelSelectUI;
+        private Animation exitAnimation;
         static bool check = true;
         
         private void Awake()
         {
-
+            exitAnimation = ExitPopUp.GetComponent<Animation>();
+            transitionToLevelSelectUI = GetComponentInChildren<Animation>();
             if (check)
             {
                 PlayerPrefs.SetInt("currentLevel", 0);
@@ -34,14 +38,25 @@ namespace MainMenu
         }
 
 
+
         public void OnClickPlay()
         {
+            transitionToLevelSelectUI.Play("MainMenuTransition");
             MainMenuUI.SetActive(false);
             LevelSelectUI.SetActive(true);
         }
         public void OnClickExit()
         {
             ExitPopUp.SetActive(true);
+            StartCoroutine(ExitPopUpCoroutine());
+
+        }
+
+        private IEnumerator ExitPopUpCoroutine()
+        {
+            
+            yield return new WaitForSeconds(0.5f);
+            exitAnimation.Play("ExitPopupAnim");
 
         }
 

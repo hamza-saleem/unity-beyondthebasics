@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AccessModifiersExample.cs" />
+    <Compile Include="Assets\Scripts\GUI Task\ButtonScripts\PlayButton.cs" />
     <Compile Include="Assets\Scripts\GUI Task\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\GUI Task\MainMenuScript.cs" />
     <Compile Include="Assets\Scripts\GUI Task\NextLevel.cs" />
